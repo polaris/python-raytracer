@@ -3,6 +3,9 @@
 ''' Raytracer - A simple raytracer written in Python '''
 
 
+from color import Color, write_color
+
+
 def render():
     ''' Renders the scene '''
     image_width = 256
@@ -12,15 +15,10 @@ def render():
 
     for j in range(image_height - 1, -1, -1):
         for i in range(image_width):
-            r = float(i) / (image_width - 1)
-            g = float(j) / (image_height - 1)
-            b = 0.25
-
-            ir = int(255.999 * r)
-            ig = int(255.999 * g)
-            ib = int(255.999 * b)
-
-            print(str(ir) + " " + str(ig) + " " + str(ib))
+            pixel_color = Color(float(i) / (image_width - 1),
+                                float(j) / (image_height - 1),
+                                0.25)
+            write_color(pixel_color)
 
 
 def main():
